@@ -1,0 +1,51 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+#
+# SPDX-FileCopyrightText: Copyright © 2023 Idiap Research Institute <contact@idiap.ch>
+#
+# SPDX-FileContributor: Théophile Gentilhomme <theophile.gentilhomme@idiap.ch>
+#
+# SPDX-License-Identifier: GPL-3.0-only
+#
+# anonymization: Text ner and pii
+#
+
+import argparse
+import json
+
+from anonymization.pii.config import gen_default_config
+
+
+if __name__ == "__main__":
+    """
+    Generate a default configuration file for anonymization.
+
+    This script generates a default configuration file in JSON format that can be used for anonymization tasks.
+    The user can provide a custom name for the configuration file (without the '.json' extension).
+
+    Usage:
+        python script_name.py [-h] [-n NAME]
+
+    Arguments:
+        -h, --help      : Show help message and exit.
+        -n NAME         : Name of the configuration file to be created (without the '.json' extension).
+                          Default is 'config'.
+
+    Example Usage:
+        # Generate a default configuration file named 'my_config.json'
+        python script_name.py -n my_config
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "-n",
+        "--name",
+        default="config",
+        help="Name of the configuration file to be created",
+    )
+
+    args = parser.parse_args()
+    with open("{}.json".format(args.name), "w", encoding="utf-8") as f:
+        json.dump(
+            gen_default_config(), f, sort_keys=True,
+            ensure_ascii=False, indent=4)

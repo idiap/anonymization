@@ -1,0 +1,21 @@
+# package-related 
+*.egg-info
+.coverage
+**/__pycache__/
+
+# notebooks
+.ipynb
+.ipynb_checkpoints
+
+# editor
+.vscode/
+
+# config
+config.py
+
+# data and models
+data/
+models/
+
+# mac
+.DS_Store

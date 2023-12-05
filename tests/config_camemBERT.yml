@@ -1,0 +1,7 @@
+nlp_engine_name: transformers
+models:
+  -
+    lang_code: fr
+    model_name:
+      spacy: fr_core_news_lg
+      transformers: cmarkea/distilcamembert-base-ner

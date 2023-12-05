@@ -1,0 +1,29 @@
+{
+    "entities": [
+        "PERSON",
+        "LOCATION",
+        "ADDRESS_NUMBER",
+        "DATE_TIME",
+        "BANK_ACCOUNT",
+        "CH_ZIPCODE",
+        "ORGANIZATION",
+        "EMAIL_ADDRESS",
+        "PHONE_NUMBER",
+        "ID",
+        "MISC",
+        "URL"
+    ],
+    "flag_only": false,
+    "language": "fr",
+    "process_columns": [
+        5
+    ],
+    "pseudonymize": [
+        "PERSON",
+        "ORGANIZATION",
+        "LOCATION"
+    ],
+    "use_camembert": true,
+    "use_spacy": true,
+    "use_swiss_ner": true
+}

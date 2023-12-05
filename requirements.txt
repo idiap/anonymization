@@ -1,0 +1,31 @@
+# packaging
+pip
+setuptools
+
+# data science
+numpy
+pandas
+scikit-learn
+
+# tests/linter
+black
+coverage
+flake8
+pytest
+pre-commit
+
+# Translation
+easynmt
+torch
+openpyxl
+
+# PII
+transformers
+presidio-analyzer
+presidio-anonymizer
+spacy
+
+#pseudomization
+Faker
+gender_guesser
+jellyfish

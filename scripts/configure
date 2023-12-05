@@ -1,0 +1,57 @@
+#!/usr/bin/env python
+# encoding: utf-8
+
+#
+# SPDX-FileCopyrightText: Copyright © 2023 Idiap Research Institute <contact@idiap.ch>
+#
+# SPDX-FileContributor: Théophile Gentilhomme <theophile.gentilhomme@idiap.ch>
+#
+# SPDX-License-Identifier: GPL-3.0-only
+#
+# anonymization: Text ner and pii
+#
+
+from transformers import AutoModelForTokenClassification
+from transformers import AutoTokenizer
+import spacy
+from huggingface_hub import snapshot_download
+
+
+def load_models():
+    """
+    Download and load pre-trained NLP models.
+
+    This script downloads and loads pre-trained NLP models from Hugging Face's model hub and spaCy's model repository.
+    It is designed to be used as a setup script to prepare the required NLP models for the main application.
+
+    Note:
+        - The script downloads and loads several models, including models for named entity recognition (NER).
+        - Make sure you have a working internet connection to download the models.
+
+    Example Usage:
+        # Run the script to download and load the NLP models
+        python script_name.py
+    """
+    print("Downloading NLP models...")
+    # Load languages
+    # Transformers: add your model here...
+    transformers_models = [
+        "cmarkea/distilcamembert-base-ner",
+        "ZurichNLP/swissbert-ner",
+        "Jean-Baptiste/camembert-ner-with-dates",
+    ]
+    # Spacy models: add your model here...
+    spacy_models = ["fr_core_news_lg", "en_core_web_lg", "de_core_news_lg"]
+
+    for mod in transformers_models:
+        snapshot_download(repo_id=mod)
+        AutoTokenizer.from_pretrained(mod)
+        AutoModelForTokenClassification.from_pretrained(mod)
+
+    for mod in spacy_models:
+        if not spacy.util.is_package(mod):
+            spacy.cli.download(mod)
+
+
+if __name__ == "__main__":
+    load_models()
