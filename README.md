@@ -19,7 +19,7 @@ conda activate my_env
 Clone the project and install it:
 
 ```bash
-git clone https://gitlab.idiap.ch/nba/anonymization.git
+git clone https://github.com/idiap/anonymization.git
 cd anonymization
 pip install -e . # install in editable mode
 configure  # Download models
